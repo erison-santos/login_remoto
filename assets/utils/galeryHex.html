@@ -1,11 +1,11 @@
 <!-- galeryHex.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Galeria Hexagonal</title>
-  <link rel="stylesheet" href="galeryHex.css" />
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Galeria Hexagonal</title>
+    <link rel="stylesheet" href="galeryHex.css" />
+    <!-- <style>
     /* Exemplo rápido de estilo mínimo */
     body {
       font-family: sans-serif;
@@ -39,64 +39,63 @@
     .gallery img:hover {
       transform: scale(1.1);
     }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Nosso time de Tecnologia 🎇</h1>
-    <em>Unimed FAMA</em>
-  </header>
+  </style> -->
+  </head>
 
-  <main>
+  <body class="hexGallery">
+    <!-- galeryHex.html -->
+    <div class="gallery-header">
+      <h1>Nosso time de Tecnologia 🎇</h1>
+      <em>Unimed FAMA</em>
+    </div>
+
     <div class="gallery" id="gallery"></div>
-  </main>
 
-  <script>
-    const base = 'unsplash.com/photo';
-    const data = [
-      {
-        code: '1583499871880-de841d1ace2a',
-        page: 'lion-lying-on-brown-rock-MUeeyzsjiY8',
-        text: 'lion couple kissing on a brown rock',
-        pos: '47% 35%',
-      },
-      {
-        code: '1571406761758-9a3eed5338ef',
-        page: 'shallow-focus-photo-of-black-elephants-hZhhVLLKJQ4',
-        text: 'herd of Sri Lankan elephants walking away from a river',
-        pos: '75% 65%',
-      },
-      {
-        code: '1619664208054-41eefeab29e9',
-        page: 'black-and-brown-bird-in-close-up-photography-LkrOEupiVt8',
-        text: 'close-up of a black cockatoo',
-        pos: '53% 43%',
-      },
-      {
-        code: '1662841238473-f4b137e123cb',
-        page: 'a-group-of-camels-in-a-desert-uIzCnO-gOrw',
-        text: 'camel and her new born calf walking in the Sahara desert',
-        pos: '65% 65%',
-      },
-    ];
+    <script>
+      const base = "unsplash.com/photo"
+      const data = [
+        {
+          img: "/assets/images/team/membro-1.png",
+          link: "https://unimedfama.com.br/",
+          text: "Lider de TI",
+          pos: "47% 35%",
+        },
+        {
+          img: "/assets/images/team/membro-2.png",
+          link: "https://unimedfama.com.br/",
+          text: "Desenvolvedor Frontend",
+          pos: "75% 65%",
+        },
+        {
+          img: "/assets/images/team/membro-3.png",
+          link: "https://unimedfama.com.br/",
+          text: "Analista de Redes",
+          pos: "53% 43%",
+        },
+        {
+          img: "/assets/images/team/membro-4.png",
+          link: "https://unimedfama.com.br/",
+          text: "Analista de Sistemas",
+          pos: "65% 65%",
+        },
+      ]
 
-    const gallery = document.getElementById('gallery');
+      const gallery = document.getElementById("gallery")
 
-    data.forEach((c, i) => {
-      const url = `https://images.${base}-${c.code}?h=500`;
-      const a = document.createElement('a');
-      a.href = `https://${base}s/${c.page}`;
-      a.target = '_blank';
-      a.style.setProperty('--i', i);
+      data.forEach((c, i) => {
+        const a = document.createElement("a")
+        a.href = c.link
+        a.target = "_blank"
+        a.style.setProperty("--i", i)
 
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = c.text;
-      if (c.pos) img.style.objectPosition = c.pos;
+        const img = document.createElement("img")
+        img.src = c.img
+        img.alt = c.text
+        if (c.pos) img.style.objectPosition = c.pos
 
-      a.appendChild(img);
-      gallery.appendChild(a);
-    });
-  </script>
-</body>
+        a.appendChild(img)
+        gallery.appendChild(a)
+      })
+    </script>
+  </body>
 </html>

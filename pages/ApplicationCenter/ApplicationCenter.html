@@ -2,16 +2,34 @@
   <head>
     <title>Central de Apps</title>
     <link rel="stylesheet" href="ApplicationCenter.css" />
+    <link rel="stylesheet" href="../../assets/utils/galeryHex.css" />
   </head>
   <body>
-    <input
-      type="text"
-      id="search-input"
-      class="searchBar"
-      placeholder="Pesquisar..."
-    />
+    <div class="hexGallery" id="galeria-container"></div>
 
-    <div id="app-container"></div>
+    <div class="search-wrapper">
+      <input
+        type="text"
+        id="search-input"
+        class="searchBar"
+        placeholder="Pesquisar..."
+      />
+    </div>
+
+    <div class="app-container" id="app-container"></div>
+
+    <div
+      id="no-results-message"
+      style="
+        display: none;
+        text-align: center;
+        margin-top: 2rem;
+        font-style: italic;
+        color: gray;
+      "
+    >
+      Nenhum aplicativo encontrado.
+    </div>
 
     <script>
       let allApps = []
@@ -19,7 +37,15 @@
       // Função para renderizar os apps dinamicamente
       function renderApps(apps) {
         const container = document.getElementById("app-container")
+        const noResultsMessage = document.getElementById("no-results-message")
         container.innerHTML = ""
+
+        if (apps.length === 0) {
+          noResultsMessage.style.display = "block"
+          return
+        } else {
+          noResultsMessage.style.display = "none"
+        }
 
         const grouped = apps.reduce((acc, app) => {
           acc[app.category] = acc[app.category] || []
@@ -71,6 +97,26 @@
         )
         renderApps(filtered)
       })
+    </script>
+
+    <script>
+      async function carregarGaleria() {
+        const container = document.getElementById("galeria-container")
+        const response = await fetch("../../assets/utils/galeryHex.html")
+        const html = await response.text()
+        container.innerHTML = html
+
+        // Reexecuta qualquer script interno
+        const scripts = container.querySelectorAll("script")
+        scripts.forEach((oldScript) => {
+          const newScript = document.createElement("script")
+          newScript.text = oldScript.text
+          document.body.appendChild(newScript)
+          oldScript.remove()
+        })
+      }
+
+      carregarGaleria()
     </script>
   </body>
 </html>

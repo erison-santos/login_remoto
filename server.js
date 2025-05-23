@@ -20,30 +20,30 @@ app.use('/data', express.static(path.join(__dirname, 'data')));
 
 // Página inicial
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Lógica de login
 app.post('/login', (req, res) => {
-  const { username, password } = req.body;
+    const { username, password } = req.body;
 
-  // Login simples (substitua por seu banco de dados)
-  const usuarioValido = 'suporte';
-  const senhaValida = 'FAMA_53rv3r';
+    // Login simples (substitua por seu banco de dados)
+    const usuarioValido = 'suporte';
+    const senhaValida = 'FAMA_53rv3r';
 
-  if (username === usuarioValido && password === senhaValida) {
-    res.redirect('/pages/ApplicationCenter/ApplicationCenter.html');
-  } else {
-    res.redirect('/?error=1');
-  }
+    if (username === usuarioValido && password === senhaValida) {
+        res.redirect('/pages/ApplicationCenter/ApplicationCenter.html');
+    } else {
+        res.redirect('/?error=1');
+    }
 });
 
 // Página not found
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'pages/notfound.html'));
+    res.status(404).sendFile(path.join(__dirname, 'pages/notfound.html'));
 });
 
 // Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

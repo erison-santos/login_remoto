@@ -106,7 +106,7 @@
   },
   {
     "name": "Notepad++",
-    "image": "",
+    "image": "https://w3schoolsua.github.io/images/notepad_icon.jpg",
     "color": "#969696",
     "download": "/downloads/UTIL/notepadInstallerx64.exe",
     "category": "Util"
