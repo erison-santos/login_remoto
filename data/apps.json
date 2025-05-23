@@ -1,0 +1,289 @@
+[
+  {
+    "name": "Rufus",
+    "image": "https://th.bing.com/th/id/OIP.zViy6LO8jo0S--gAQc3vTwHaE8?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#b0b6a9",
+    "download": "/downloads/BOOT/rufus.exe",
+    "category": "BOOT"
+  },
+  {
+    "name": "Media Creation Tool",
+    "image": "https://i.wfcdn.de/teaser/1920/54627.jpg",
+    "color": "#afa294",
+    "download": "/downloads/BOOT/MediaCreationTool.exe",
+    "category": "BOOT"
+  },
+  {
+    "name": "Google Chrome",
+    "image": "https://media.pasionmovil.com/2022/12/1669987081_Google-Chrome-109-arrives-with-changes-to-cookie-use-payment.jpg",
+    "color": "#a0a0a0",
+    "download": "/downloads/INTERNET/ChromeSetup.exe",
+    "category": "INTERNET"
+  },
+  {
+    "name": "Google Drive",
+    "image": "https://th.bing.com/th/id/OIP.qPFaIKwxsT1KVSEmuRhypQHaGo?cb=iwc2&w=680&h=609&rs=1&pid=ImgDetMain",
+    "color": "#9b9b9b",
+    "download": "/downloads/INTERNET/GoogleDriveSetup.exe",
+    "category": "INTERNET"
+  },
+  {
+    "name": "Firefox",
+    "image": "https://www.sourceht.com/wp-content/uploads/2020/11/firefox-browser.jpg",
+    "color": "#9b9b9b",
+    "download": "/downloads/INTERNET/FirefoxInstaller.exe",
+    "category": "INTERNET"
+  },
+  {
+    "name": "AnyDesk",
+    "image": "https://1.bp.blogspot.com/-aTUZXJ2vktM/YLPkz4OMtZI/AAAAAAAACC4/r7Ov27lGiaMxR05DVWcSHIA9hUywwNOQgCLcBGAsYHQ/s1280/photo_2019-12-31_00-09-20.jpg",
+    "color": "#969696",
+    "download": "/downloads/REDE/anydesk-6-0-8.exe",
+    "category": "REDE"
+  },
+  {
+    "name": "UniFI",
+    "image": "https://logodix.com/logo/1984655.png",
+    "color": "#969696",
+    "download": "/downloads/REDE/UniFi-installer.exe",
+    "category": "REDE"
+  },
+  {
+    "name": "Putty",
+    "image": "https://pics.computerbase.de/1/4/1/4/0/logo-256.png",
+    "color": "#969696",
+    "download": "/downloads/REDE/putty-64bit.msi",
+    "category": "REDE"
+  },
+  {
+    "name": "WinBox",
+    "image": "https://th.bing.com/th/id/R.9e5388935a5203bcf15011e2ded7ccba?rik=epqRNW4nNCixBg&pid=ImgRaw&r=0",
+    "color": "#969696",
+    "download": "/downloads/REDE/winbox64.exe",
+    "category": "REDE"
+  },
+  {
+    "name": "Zabbix",
+    "image": "https://c.tenor.com/-XGCTdCSV2gAAAAC/zabbix-zbx.gif",
+    "color": "#969696",
+    "download": "/downloads/REDE/zabbix_agent-windows.exe",
+    "category": "REDE"
+  },
+  {
+    "name": "TightVNC",
+    "image": "https://www.accuratereviews.com/wp-content/uploads/2019/05/vnc.png",
+    "color": "#969696",
+    "download": "/downloads/REDE/tightvnc-2.8.85-gpl-setup-64bit.msi",
+    "category": "REDE"
+  },
+  {
+    "name": "Remote Desktop",
+    "image": "https://www.anyviewer.com/screenshot/others/illustration/remote-desktop-manager.png",
+    "color": "#969696",
+    "download": "/downloads/REDE/remote-desktop-manager.exe",
+    "category": "REDE"
+  },
+  {
+    "name": "Mikrotik",
+    "image": "https://th.bing.com/th/id/OIP.UkLZJepziunlxETmP-MRNAHaEK?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/REDE/netinstall64.zip",
+    "category": "REDE"
+  },
+  {
+    "name": "Office",
+    "image": "https://www.enter.co/wp-content/uploads/2015/03/Office-2016-para-negocios.jpg",
+    "color": "#969696",
+    "download": "/downloads/UTIL/OfficeSetup.exe",
+    "category": "Util"
+  },
+  {
+    "name": "Bitdefender",
+    "image": "https://imtc.qccdn.fr/test/antivirus/zoom/bitdefender-internet-security_001.jpg",
+    "color": "#969696",
+    "download": "/downloads/UTIL/Bitdefender.exe",
+    "category": "Util"
+  },
+  {
+    "name": "Notepad++",
+    "image": "",
+    "color": "#969696",
+    "download": "/downloads/UTIL/notepadInstallerx64.exe",
+    "category": "Util"
+  },
+  {
+    "name": "Photoshop CS6 Portable",
+    "image": "https://th.bing.com/th/id/OIP.8t2RiUQYmDK3ZheKoyccewHaEK?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/UTIL/AdobePhotoshopCS6Portable.rar",
+    "category": "Util"
+  },
+  {
+    "name": "Hirens Boot",
+    "image": "https://th.bing.com/th/id/R.40948bf5cba763e8dacf9c747b903f90?rik=cP%2bhkw5qIdnYFw&riu=http%3a%2f%2fdomoticx.com%2fwp-content%2fuploads%2f2015%2f11%2fHirens-BootCD-15.2-cd-rom-label.png&ehk=yHe0EZB5xGBY%2b1zwbpFi0bWhxquNZz99MGU42VF22mM%3d&risl=&pid=ImgRaw&r=0",
+    "color": "#969696",
+    "download": "/downloads/UTIL/Hirens.BootCD.15.2.exe",
+    "category": "Util"
+  },
+  {
+    "name": "Able 2 Extract Pro",
+    "image": "https://th.bing.com/th/id/OIP.i3AL8HB_V7KbrBpoA2zrVwHaHa?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/UTIL/InstallAble2ExtractPro.exe",
+    "category": "Util"
+  },
+  {
+    "name": "Winrar 64Bits",
+    "image": "https://th.bing.com/th/id/OIP.semfIj57yMXVEWM__dAH5gHaEK?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/UTIL/winrar-x64.exe",
+    "category": "Util"
+  },
+  {
+    "name": "VM Ware Client",
+    "image": "https://th.bing.com/th/id/OIP.fE4tz89dSs6J7opcN8qaZQHaEQ?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/VMware-viclient-all-6.0.0.exe",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Linux Mint21 Cinnamon 64x",
+    "image": "https://www.pixelstalk.net/wp-content/uploads/2016/07/Free-Download-Linuxmint-Image.png",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/linuxmint-21-cinnamon-64bit.iso",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Ubuntu 12.10 32x",
+    "image": "https://th.bing.com/th/id/R.76dfc91ab7fc328d37bbde66293c5b8b?rik=8o9TFPQFL4QfJA&riu=http%3a%2f%2fvariwiki.com%2fimages%2f1%2f1d%2fUbuntu-logo.jpg&ehk=qBb%2b4PsGyOnRjZw5NPndUBMeQe9pg%2blgWz1hOnQ0su0%3d&risl=&pid=ImgRaw&r=0",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/ubuntu-12.10-desktop-i386.iso",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Mikrotik 7.16.2 64x",
+    "image": "https://th.bing.com/th/id/OIP.h7_gTVvn10BUuh1WoQ9rJAHaHa?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/mikrotik-7.16.2-arm64.iso",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Windows Server",
+    "image": "https://s.alicdn.com/@sc04/kf/Hb35bd35c28934dc29eea71a591728416W.jpg_720x720q50.jpg",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/Win11_24H2_BrazilianPortuguese_x64.iso",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Windows Server",
+    "image": "https://s.alicdn.com/@sc04/kf/Hb35bd35c28934dc29eea71a591728416W.jpg_720x720q50.jpg",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/WindowsServer_MULTI.iso",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Oracle 11gR2 32x",
+    "image": "https://www.techasoft.com/debug/img/oracle.png",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/1.ORACLE/win32_11gR2_client.zip",
+    "category": "SISTEMAS"
+  },
+  {
+    "name": "Oracle 11gR2 64x",
+    "image": "https://www.techasoft.com/debug/img/oracle.png",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/1.ORACLE/win64_11gR2_client.zip",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "BDE",
+    "image": "https://static.vecteezy.com/system/resources/previews/022/897/299/original/bde-letter-logo-design-in-illustration-logo-calligraphy-designs-for-logo-poster-invitation-etc-vector.jpg",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/4.BDE/BDE.rar",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "DOT NET 3.5",
+    "image": "https://th.bing.com/th/id/R.574c6555e32c018ef742edb3135b5a4e?rik=FYsF6VR5YgFmzg&riu=http%3a%2f%2fznsoftwaretechnologies.com%2fassets%2fimg%2finnerpage-banner%2fneo4jclient-for-dotnet.jpg&ehk=anabp8RSaQyPX2x%2bFdRYg1RHlA%2fvlAvn%2b6DPSoNoUYQ%3d&risl=&pid=ImgRaw&r=0",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/5.DOTNET/dotNetFx35setup.exe",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "Infomed Piramide BAT",
+    "image": "https://i0.wp.com/purainfo.com.br/wp-content/uploads/2018/05/CMDart.png?w=660&ssl=1",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/6.INSTALL/InfomedPiramide.bat",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "PL SQL Dev",
+    "image": "https://th.bing.com/th/id/OIP.ms00BKRaKa-eS2Kxl73acQHaHa?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/PL_SQL_DEV_1406x64.rar",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "Power BI",
+    "image": "https://th.bing.com/th/id/OIP.ZT5zsMj1BW9yERM7N05LfgHaEK?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/PBIDesktopSetup_x64.exe",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "Postgre SQL",
+    "image": "https://th.bing.com/th/id/R.cbf8d13a339e78aeaec5300df37ebbee?rik=sVn05LDxQbZetw&pid=ImgRaw&r=0",
+    "color": "#969696",
+    "download": "/downloads/DEV/postgresql-17.4-1.exe",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "Ollama AI",
+    "image": "https://th.bing.com/th/id/OIP.4p7HYzy7HZMWSDMdLyhBcQHaEK?cb=iwc2&w=2000&h=1125&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/OllamaSetup.exe",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "VS Code",
+    "image": "https://th.bing.com/th/id/OIP.SZ3NSZSAK2nGBmqxZt7tJAHaEK?cb=iwc2&w=1920&h=1080&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/VSCodeUserSetup.exe",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "Node.js v22.16.0",
+    "image": "https://clipground.com/images/node-js-logo-2.jpg",
+    "color": "#969696",
+    "download": "/downloads/DEV/node-v22.16.0-x64.msi",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "N V M",
+    "image": "https://th.bing.com/th/id/OIP.Rucrctgwh3KhnaJS863rlwHaEY?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/nvm-setup.exe",
+    "category": "Desenvolvimento"
+  },
+  {
+    "name": "Federação Unimed",
+    "image": "https://th.bing.com/th/id/OIP.7D78kwqhhyggelp_zqTibAAAAA?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DIVERSOS/CERTIFICADOS/ATUALIZADO/FederacaoUnimed.rar",
+    "category": "Certificados"
+  },
+  {
+    "name": "Starsign CUT 64x",
+    "image": "https://th.bing.com/th/id/OIP.7D78kwqhhyggelp_zqTibAAAAA?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DIVERSOS/CERTIFICADOS/DRIVERS/GDsetupStarsignCUTx64.exe",
+    "category": "Certificados"
+  },
+  {
+    "name": "SafeSign IC30124",
+    "image": "https://th.bing.com/th/id/OIP.7D78kwqhhyggelp_zqTibAAAAA?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DIVERSOS/CERTIFICADOS/DRIVERS/SafeSignIC30124-x64-win-tu-admin.exe",
+    "category": "Certificados"
+  }
+]

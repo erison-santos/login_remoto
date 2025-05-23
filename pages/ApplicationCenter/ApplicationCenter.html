@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>Central de Apps</title>
+    <link rel="stylesheet" href="ApplicationCenter.css" />
+  </head>
+  <body>
+    <input
+      type="text"
+      id="search-input"
+      class="searchBar"
+      placeholder="Pesquisar..."
+    />
+
+    <div id="app-container"></div>
+
+    <script>
+      let allApps = []
+
+      // Função para renderizar os apps dinamicamente
+      function renderApps(apps) {
+        const container = document.getElementById("app-container")
+        container.innerHTML = ""
+
+        const grouped = apps.reduce((acc, app) => {
+          acc[app.category] = acc[app.category] || []
+          acc[app.category].push(app)
+          return acc
+        }, {})
+
+        Object.keys(grouped).forEach((category) => {
+          const section = document.createElement("section")
+
+          const header = document.createElement("header")
+          header.innerHTML = `<h1>${category}</h1>`
+          section.appendChild(header)
+
+          grouped[category].forEach((app) => {
+            const article = document.createElement("article")
+            article.style.setProperty("--avarage-color", app.color)
+            article.innerHTML = `
+          <a class="downloadLink" href="${app.download}" download>
+            <figure>
+              <img src="${app.image}" alt="${app.name}" />
+              <figcaption>${app.name}</figcaption>
+            </figure>
+          </a>
+        `
+            section.appendChild(article)
+          })
+
+          container.appendChild(section)
+        })
+      }
+
+      // Carrega os apps e renderiza
+      fetch("/data/apps.json")
+        .then((res) => res.json())
+        .then((apps) => {
+          allApps = apps
+          renderApps(allApps)
+        })
+        .catch((err) => {
+          console.error("Erro ao carregar os aplicativos:", err)
+        })
+
+      // Filtra enquanto digita
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase()
+        const filtered = allApps.filter((app) =>
+          app.name.toLowerCase().includes(query)
+        )
+        renderApps(filtered)
+      })
+    </script>
+  </body>
+</html>
