@@ -45,7 +45,9 @@ main a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 30vh;
+  /* min-height: 30vh; */
+  padding-top: 4rem; /* novo */
+  padding-bottom: 2rem; /* opcional */
   background: #121212;
   color: #ededed;
   text-align: center;
@@ -56,7 +58,8 @@ main a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
+  align-items: center;
 }
 
 .hexGallery img {
@@ -138,5 +141,16 @@ RELEVANT CODE FOR THE HEX GRID @property --w {
 @media (max-width: 958px) {
   .hexGallery {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #galeria-container {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+  }
+  .hexGallery {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
   }
 }

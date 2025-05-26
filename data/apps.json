@@ -266,6 +266,13 @@
     "category": "Desenvolvimento"
   },
   {
+    "name": "GIT",
+    "image": "https://th.bing.com/th/id/OIP.VxgJAnxi2l9QXRiT6rVDywHaFa?cb=iwc2&rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/DEV/Git-2.49.0-64-bit.exe",
+    "category": "Desenvolvimento"
+  },
+  {
     "name": "Federação Unimed",
     "image": "https://th.bing.com/th/id/OIP.7D78kwqhhyggelp_zqTibAAAAA?cb=iwc2&rs=1&pid=ImgDetMain",
     "color": "#969696",
