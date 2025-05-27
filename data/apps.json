@@ -3,7 +3,7 @@
     "name": "Rufus",
     "image": "https://th.bing.com/th/id/OIP.zViy6LO8jo0S--gAQc3vTwHaE8?cb=iwc2&rs=1&pid=ImgDetMain",
     "color": "#b0b6a9",
-    "download": "/downloads/BOOT/rufus.exe",
+    "download": "/downloads/BOOT/rufus-4.6.exe",
     "category": "BOOT"
   },
   {
@@ -186,13 +186,34 @@
     "image": "https://www.techasoft.com/debug/img/oracle.png",
     "color": "#969696",
     "download": "/downloads/Informed_Piramide/1.ORACLE/win32_11gR2_client.zip",
-    "category": "SISTEMAS"
+    "category": "Infomed & Piramide"
   },
   {
     "name": "Oracle 11gR2 64x",
     "image": "https://www.techasoft.com/debug/img/oracle.png",
     "color": "#969696",
     "download": "/downloads/Informed_Piramide/1.ORACLE/win64_11gR2_client.zip",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "Oracle 12 201c 32x",
+    "image": "https://www.techasoft.com/debug/img/oracle.png",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/1.ORACLE/win32_12201c_client.zip",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "Oracle 12 201c 64x",
+    "image": "https://www.techasoft.com/debug/img/oracle.png",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/1.ORACLE/winx64_12201c_client.zip",
+    "category": "Infomed & Piramide"
+  },
+  {
+    "name": "tnsnames.ora",
+    "image": "https://i0.wp.com/purainfo.com.br/wp-content/uploads/2018/05/CMDart.png?w=660&ssl=1",
+    "color": "#969696",
+    "download": "/downloads/Informed_Piramide/1.ORACLE/tnsnames.ora",
     "category": "Infomed & Piramide"
   },
   {
