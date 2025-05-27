@@ -40,7 +40,7 @@ app.post('/login', (req, res) => {
 
 // Página not found
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'pages/notfound.html'));
+    res.status(404).sendFile(path.join(__dirname, 'pages/NotFound/notfound.html'));
 });
 
 // Iniciar servidor
