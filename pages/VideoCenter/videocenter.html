@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Vídeos</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fancybox -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon Google -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: oklch(from #166496 0.12 min(c, 0.0512) h);
+      }
+
+      .gallery-item {
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-item .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 20px;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .gallery-item:hover .overlay {
+        opacity: 1;
+      }
+
+      .video-item {
+        position: relative;
+      }
+
+      .video-item::after {
+        content: "\f144";
+        font-family: "Font Awesome 5 Free";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: white;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+
+      .video-item:hover::after {
+        opacity: 1;
+      }
+
+      .filter-btn {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      .filter-btn.active {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header ve Navbar ana sayfadan gelecek -->
+
+    <!-- Galeri İçeriği -->
+    <div class="container mt-4">
+      <div id="buttons-group" class="buttons-group"></div>
+      <!-- Breadcrumb -->
+      <!-- <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../pages/ApplicationCenter/ApplicationCenter.html">Home</a></li>
+                <li class="breadcrumb-item active text-danger">Videos</li>
+            </ol>
+        </nav> -->
+
+      <!-- Galeri Başlık -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Central de Vídeos</h2>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-warning active filter-btn"
+            data-category="all"
+          >
+            Todos
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-warning filter-btn"
+            data-category="server"
+          >
+            Servidores
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-warning filter-btn"
+            data-category="service"
+          >
+            Serviços
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-warning filter-btn"
+            data-category="system"
+          >
+            Sistemas
+          </button>
+        </div>
+      </div>
+
+      <!-- Kategori Filtreleme -->
+      <div class="mb-4">
+        <button
+          class="btn btn-sm btn-outline-secondary filter-btn"
+          data-subcategory="all"
+        >
+          Todos
+        </button>
+        <button
+          class="btn btn-sm btn-outline-secondary filter-btn"
+          data-subcategory="saw"
+        >
+          SAW
+        </button>
+        <button
+          class="btn btn-sm btn-outline-secondary filter-btn"
+          data-subcategory="paloalto"
+        >
+          Palo Alto
+        </button>
+        <button
+          class="btn btn-sm btn-outline-secondary filter-btn"
+          data-subcategory="grafana"
+        >
+          Grafana
+        </button>
+      </div>
+
+      <!-- Galeria Grid -->
+      <div class="row" id="gallery-grid"></div>
+
+      <!-- Sayfalama -->
+      <nav aria-label="Galeri sayfaları" class="mt-4">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Voltar</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Próximo</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Footer ana sayfadan gelecek -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <script>
+      async function carregarButtons() {
+        const buttonsGroup = document.getElementById("buttons-group")
+        try {
+          const response = await fetch(
+            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
+          )
+          const html = await response.text()
+          buttonsGroup.innerHTML = html
+
+          // Reexecuta scripts internos, se houver
+          const scripts = buttonsGroup.querySelectorAll("script")
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script")
+            newScript.text = oldScript.text
+            document.body.appendChild(newScript)
+            oldScript.remove()
+          })
+
+          const buttonStyle = document.getElementById("main-buttons")
+
+          if (buttonStyle) {
+            window.addEventListener("scroll", () => {
+              if (window.scrollY > 0) {
+                buttonStyle.classList.add("fixed")
+              } else {
+                buttonStyle.classList.remove("fixed")
+              }
+            })
+          }
+        } catch (err) {
+          console.error("Erro ao carregar o componente de botões:", err)
+        }
+      }
+
+      carregarButtons()
+    </script>
+
+    <script>
+      $(document).ready(function () {
+
+        // Funções de Filtragem
+        let currentCategory = "all"
+        let currentSubCategory = "all"
+
+        function aplicarFiltro() {
+          const $items = $(".gallery-item")
+
+          $items
+            .hide()
+            .filter(function () {
+              const item = $(this)
+              const catMatch =
+                currentCategory === "all" ||
+                item.data("category") === currentCategory
+              const subMatch =
+                currentSubCategory === "all" ||
+                item.data("subcategory") === currentSubCategory
+              return catMatch && subMatch
+            })
+            .show()
+        }
+
+        $(".filter-btn[data-category]").click(function () {
+          currentCategory = $(this).data("category")
+          $(".filter-btn[data-category]").removeClass("active")
+          $(this).addClass("active")
+          aplicarFiltro()
+        })
+
+        $(".filter-btn[data-subcategory]").click(function () {
+          currentSubCategory = $(this).data("subcategory")
+          $(".filter-btn[data-subcategory]").removeClass("active")
+          $(this).addClass("active")
+          aplicarFiltro()
+        })
+
+        // Lazy Loading
+        function lazyLoad() {
+          const images = document.querySelectorAll('img[loading="lazy"]')
+          images.forEach((img) => {
+            if (img.getBoundingClientRect().top < window.innerHeight) {
+              img.src = img.dataset.src
+              img.removeAttribute("loading")
+            }
+          })
+        }
+
+        // Timer para evento de scroll
+        let scrollTimeout
+        window.addEventListener("scroll", function () {
+          if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout)
+          }
+          scrollTimeout = window.requestAnimationFrame(lazyLoad)
+        })
+
+        // Primeiro carregamento
+        lazyLoad()
+      })
+
+      // Scroll Infinito
+      let page = 1
+      let loading = false
+
+      window.addEventListener("scroll", function () {
+        if (
+          window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 1000 &&
+          !loading
+        ) {
+          loadMoreContent()
+        }
+      })
+
+      function loadMoreContent() {
+        // API'den yeni içerik yükleme simülasyonu
+        loading = true
+        // AJAX çağrısı yapılacak
+        setTimeout(() => {
+          page++
+          loading = false
+        }, 1000)
+      }
+    </script>
+
+    <script>
+      async function carregarVideos() {
+        const container = document.getElementById("gallery-grid")
+        container.innerHTML = ""
+
+        try {
+          const response = await fetch("../../data/videos.json")
+          const videos = await response.json()
+
+          videos.forEach((video) => {
+            const col = document.createElement("div")
+            col.className = `col-md-3 gallery-item video-item`
+            col.dataset.category = video.category
+            col.dataset.subcategory = video.subcategory
+
+            col.innerHTML = `
+              <a href="${video.url}" data-caption="${video.caption}" target="_blank">
+                <img src="${video.thumbnail}" alt="${video.title}">
+                <div class="overlay">
+                  <h5>${video.title}</h5>
+                  <p class="mb-0"><small>${video.date}</small></p>
+                </div>
+              </a>
+            `
+
+            container.appendChild(col)
+          })
+
+        } catch (err) {
+          console.error("Erro ao carregar vídeos:", err)
+          container.innerHTML = `<p style="color:red;">Erro ao carregar vídeos.</p>`
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", carregarVideos)
+    </script>
+  </body>
+</html>

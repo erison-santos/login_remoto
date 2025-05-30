@@ -1,15 +1,25 @@
 <html>
   <head>
     <title>Central de Apps</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+        <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap");
       @layer base, tokens, animations,  components, utilities;
 
       @layer tokens {
-        @font-face {
+        /* @font-face {
           font-family: Troubleside;
           src: url("https://cdn.jsdelivr.net/gh/chytanka/chytanka.github.io/src/assets/fonts/Troubleside.ttf");
           font-display: swap;
-        }
+        } */
 
         :root {
           --ratio: 257 / 364;
@@ -34,7 +44,7 @@
             1rem
           ) !important;
           line-height: 1.3;
-          font-family: Arial, sans-serif;
+          --font-default: "Quattrocento Sans", sans-serif;
         }
 
         @media (prefers-color-scheme: light) {
@@ -85,6 +95,11 @@
           margin: 0;
         }
 
+        body {
+          font-family: var(--font-default);
+          color: var(--text);
+        }
+
         img {
           width: 100%;
           height: auto;
@@ -123,10 +138,12 @@
           display: block;
         }
 
+        body {
+          color: var(--text);
+        }
+
         h1 {
           color: var(--accent);
-          font-family: Troubleside;
-          margin: 1rem 0 0;
         }
 
         main {
@@ -202,7 +219,6 @@
         }
 
         figure figcaption {
-          font-family: Troubleside;
           margin: 1ch;
           display: -webkit-box;
           -webkit-box-orient: vertical;
@@ -210,6 +226,8 @@
           overflow: hidden;
           word-break: break-word;
           line-height: 1;
+          color: white;
+          font-family: var(--font-default);
         }
       }
 
@@ -246,34 +264,33 @@
   </head>
 
   <body>
-    <div class="hexGallery" id="galeria-container"></div>
-
-    <div class="search-wrapper">
-      <input
-        type="text"
-        id="search-input"
-        class="searchBar"
-        placeholder="Pesquisar..."
-      />
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4 pt-4">
+        <h2>Central de Apps</h2>
+      </div>
+      <div class="header-container">
+        <div id="search-placeholder" class="search-wrapper"></div>
+        <div id="buttons-group" class="buttons-group"></div>
+      </div>
+  
+      <div class="app-container" id="app-container"></div>
+  
+      <div
+        id="no-results-message"
+        style="
+          display: none;
+          text-align: center;
+          margin-top: 2rem;
+          font-style: italic;
+          color: gray;
+        "
+      ></div>
     </div>
-
-    <div class="app-container" id="app-container"></div>
-
-    <div
-      id="no-results-message"
-      style="
-        display: none;
-        text-align: center;
-        margin-top: 2rem;
-        font-style: italic;
-        color: gray;
-      "
-    ></div>
 
     <script>
       let allApps = []
 
-      // Função para renderizar os apps dinamicamente
+      /* Função para renderizar os apps dinamicamente */
       function renderApps(apps) {
         const container = document.getElementById("app-container")
         const noResultsMessage = document.getElementById("no-results-message")
@@ -329,7 +346,6 @@
         })
       }
 
-      // Carrega os apps e renderiza
       fetch("/data/apps.json")
         .then((res) => res.json())
         .then((apps) => {
@@ -339,37 +355,93 @@
         .catch((err) => {
           console.error("Erro ao carregar os aplicativos:", err)
         })
-
-      // Filtra enquanto digita
-      document.getElementById("search-input").addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase()
-        const filtered = allApps.filter((app) =>
-          app.name.toLowerCase().includes(query)
-        )
-        renderApps(filtered)
-      })
     </script>
 
     <script>
-      async function carregarGaleria() {
-        const container = document.getElementById("galeria-container")
-        const response = await fetch(
-          "../../assets/utils/GaleryHex/galeryHex.html"
-        )
-        const html = await response.text()
-        container.innerHTML = html
+      async function carregarButtons() {
+        const buttonsGroup = document.getElementById("buttons-group")
+        try {
+          const response = await fetch(
+            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
+          )
+          const html = await response.text()
+          buttonsGroup.innerHTML = html
 
-        // Reexecuta qualquer script interno
-        const scripts = container.querySelectorAll("script")
-        scripts.forEach((oldScript) => {
-          const newScript = document.createElement("script")
-          newScript.text = oldScript.text
-          document.body.appendChild(newScript)
-          oldScript.remove()
-        })
+          // Reexecuta scripts internos, se houver
+          const scripts = buttonsGroup.querySelectorAll("script")
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script")
+            newScript.text = oldScript.text
+            document.body.appendChild(newScript)
+            oldScript.remove()
+          })
+
+          const buttonStyle = document.getElementById("main-buttons")
+
+          if (buttonStyle) {
+            window.addEventListener("scroll", () => {
+              if (window.scrollY > 0) {
+                buttonStyle.classList.add("fixed")
+              } else {
+                buttonStyle.classList.remove("fixed")
+              }
+            })
+          }
+        } catch (err) {
+          console.error("Erro ao carregar o componente de botões:", err)
+        }
       }
 
-      carregarGaleria()
+      carregarButtons()
+    </script>
+
+    <script>
+      async function carregarSearchStyle() {
+        const placeholder = document.getElementById("search-placeholder")
+        try {
+          const response = await fetch(
+            "../../assets/utils/SearchStyle/searchstyle.html"
+          )
+          const html = await response.text()
+          placeholder.innerHTML = html
+
+          // Reexecuta scripts internos, se houver
+          const scripts = placeholder.querySelectorAll("script")
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script")
+            newScript.text = oldScript.text
+            document.body.appendChild(newScript)
+            oldScript.remove()
+          })
+
+          // ✅ Adiciona o evento no input após carregá-lo
+          const input = document.getElementById("search-input")
+          if (input) {
+            input.addEventListener("input", (e) => {
+              const query = e.target.value.toLowerCase()
+              const filtered = allApps.filter((app) =>
+                app.name.toLowerCase().includes(query)
+              )
+              renderApps(filtered)
+            })
+          }
+        } catch (err) {
+          console.error("Erro ao carregar o componente de busca:", err)
+        }
+
+        const searchBar = document.getElementById("search-bar")
+
+        if (searchBar) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 0) {
+              searchBar.classList.add("fixed")
+            } else {
+              searchBar.classList.remove("fixed")
+            }
+          })
+        }
+      }
+      carregarSearchStyle()
     </script>
   </body>
 </html>

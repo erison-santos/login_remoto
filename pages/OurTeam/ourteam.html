@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Nossa Equipe</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+      }
+
+      .team-member {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .hexGallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hexGallery img {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="buttons-group" class="buttons-group"></div>
+    <div class="team-member">
+      <div class="hexGallery" id="galeria-container"></div>
+    </div>
+
+    <script>
+      async function carregarGaleria() {
+        const container = document.getElementById("galeria-container")
+        const response = await fetch(
+          "../../assets/utils/GaleryHex/galeryHex.html"
+        )
+        const html = await response.text()
+        container.innerHTML = html
+
+        // Reexecuta qualquer script interno
+        const scripts = container.querySelectorAll("script")
+        scripts.forEach((oldScript) => {
+          const newScript = document.createElement("script")
+          newScript.text = oldScript.text
+          document.body.appendChild(newScript)
+          oldScript.remove()
+        })
+      }
+
+      carregarGaleria()
+    </script>
+
+        <script>
+      async function carregarButtons() {
+        const buttonsGroup = document.getElementById("buttons-group")
+        try {
+          const response = await fetch(
+            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
+          )
+          const html = await response.text()
+          buttonsGroup.innerHTML = html
+
+          // Reexecuta scripts internos, se houver
+          const scripts = buttonsGroup.querySelectorAll("script")
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script")
+            newScript.text = oldScript.text
+            document.body.appendChild(newScript)
+            oldScript.remove()
+          })
+
+          const buttonStyle = document.getElementById("main-buttons")
+
+          if (buttonStyle) {
+            window.addEventListener("scroll", () => {
+              if (window.scrollY > 0) {
+                buttonStyle.classList.add("fixed")
+              } else {
+                buttonStyle.classList.remove("fixed")
+              }
+            })
+      }
+        } catch (err) {
+          console.error("Erro ao carregar o componente de botões:", err)
+        }
+      }
+
+      carregarButtons()
+    </script>
+  </body>
+</html>
