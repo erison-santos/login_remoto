@@ -1,425 +1,157 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
   <head>
-    <!-- Icon Google -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Vídeos</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fancybox -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+      rel="stylesheet"
+    />
+    <!-- Icon Google -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap");
-
-        :root {
-        --font-default: "Quattrocento Sans", sans-serif;
-        --color-font: #ffffff;
-        --color-teal: #0096a0;
-        --color-default: #ffd60a;
-        --color-background: #166496;
-      }
-
-      .search-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 3rem;
-      }
-
       body {
-        background: #dce1df;
-        color: #4f585e;
-        text-rendering: optimizeLegibility;
+        background-color: oklch(from #166496 0.12 min(c, 0.0512) h);
       }
 
-      a.btn {
-        background: var(--color-teal);
-        border-radius: 4px;
-      	box-shadow: 0 2px 0px 0 rgba(0,0,0,0.25);
-        color: var(--color-font);
-        display: inline-block;
-        padding: 6px 30px 8px;
+      .gallery-item {
+        margin-bottom: 30px;
         position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-item .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 20px;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .gallery-item:hover .overlay {
+        opacity: 1;
+      }
+
+      .pop-link a {
         text-decoration: none;
-      	transition: all 0.1s 0s ease-out;
+        color: inherit;
       }
 
-       a.btn:hover {
-        background: lighten(var(--color-teal),2.5);
-        box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
-        transform: translateY(-2px);
-        transition: all 0.25s 0s ease-out;
+      .pop-link h6 {
       }
 
-      a.btn:active {
-        background: darken(var(--color-teal),2.5);
-        box-shadow: 0 1px 0px 0 rgba(255,255,255,0.25);
-        transform: translate3d(0,1px,0);
-        transition: all 0.025s 0s ease-out;
+      .pop-link footer {
+        margin-top: auto;
       }
 
-      div.cards {
-        margin: 80px auto;
-        max-width: 960px;
-        text-align: center;
-      }
-
-      div.card {
-        background: var(--color-font);
-        display: inline-block;
-        margin: 8px;
-        max-width: 300px;
-        perspective: 1000px;
+      .pop-item {
         position: relative;
-        text-align: left;
-        transition: all 0.3s 0s ease-in;
-        transform-style: preserve-3d;
-        width: 300px;
-        z-index: 1;
-
-        img {
-          max-width: 300px;
-        }
-
-        .card__image-holder {
-          background: rgba(0,0,0,0.1);
-          height: 0;
-          padding-bottom: 75%;
-        }
-
-        div.card-title {
-          background: var(--color-font);
-          padding: 6px 15px 10px;
-          position: relative;
-          z-index: 0;
-
-          a.toggle-info {
-            border-radius: 32px;
-            height: 32px;
-            padding: 0;
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            width: 32px;
-
-            span {
-              background: var(--color-font);
-              display: block;
-              height: 2px;
-              position: absolute;
-              top: 16px;
-              transition: all 0.15s 0s ease-out;
-              width: 12px;
-            }
-
-            span.left {
-              right: 14px;
-              transform: rotate(45deg);
-            }
-            span.right {
-              left: 14px;
-              transform: rotate(-45deg);
-            }
-          }
-
-          h2 {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin: 0;
-            padding: 0;
-
-            small {
-              display: block;
-              font-size: 18px;
-              font-weight: 600;
-              letter-spacing: -0.025em;
-            }
-          }
-        }
-
-        div.card-description {
-          padding: 0 15px 10px;
-          position: relative;
-          font-size: 14px;
-        }
-
-        div.card-actions {
-        	box-shadow: 0 2px 0px 0 rgba(0,0,0,0.075);
-          padding: 10px 15px 20px;
-          text-align: center;
-        }
-
-        div.card-flap {
-          background: rgba(255, 0, 0, 0.8);;
-          position: absolute;
-          width: 100%;
-          transform-origin: top;
-          transform: rotateX(-90deg);
-        }
-        div.flap1 {
-          transition: all 0.3s 0.3s ease-out;
-          z-index: -1;
-        }
-        div.flap2 {
-          transition: all 0.3s 0s ease-out;
-          z-index: -2;
-        }
-
       }
 
-      div.cards.showing {
-        div.card {
-          cursor: pointer;
-          opacity: 0.6;
-          transform: scale(0.88);
-        }
+      .pop-item::after {
+        content: "\f144";
+        font-family: "Font Awesome 5 Free";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: white;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
       }
 
-        div.cards.showing {
-        div.card:hover {
-          opacity: 0.94;
-          transform: scale(0.92);
-        }
+      .pop-item:hover::after {
+        opacity: 1;
       }
 
-      div.card.show {
-        opacity: 1 !important;
-        transform: scale(1) !important;
+      .filter-btn {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
 
-        div.card-title {
-          a.toggle-info {
-            background: #ff6666 !important;
-            span {
-              top: 15px;
-            }
-            span.left {
-              right: 10px;
-            }
-            span.right {
-              left: 10px;
-            }
-          }
-        }
-        div.card-flap {
-          background: var(--color-font);
-          transform: rotateX(0deg);
-        }
-        div.flap1 {
-          transition: all 0.3s 0s ease-out;
-        }
-        div.flap2 {
-          transition: all 0.3s 0.2s ease-out;
-        }
+      .filter-btn.active {
+        background-color: red;
+        color: white;
       }
     </style>
   </head>
   <body>
-    <div class="header-container">
-      <div id="search-placeholder" class="search-wrapper"></div>
+    <!-- Header ve Navbar ana sayfadan gelecek -->
+
+    <!-- Galeri İçeriği -->
+    <div class="container mt-4">
       <div id="buttons-group" class="buttons-group"></div>
-    </div>
-    <div class="container mt-0">
-      <div class="d-flex justify-content-between align-items-center mb-4 pt-4">
-        <h2>Pops Page</h2>
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Central de Documentos</h2>
+
+        <!-- Grupo de botões Categoria -->
+        <div id="categoria-buttons" class="btn-group"></div>
       </div>
 
-      <div id="container-pop"></div>
+      <!-- Grupo de botões Subcategoria -->
+      <div id="subcategoria-buttons" class="mb-4"></div>
 
-      <div
-        id="no-results-message"
-        style="
-          display: none;
-          text-align: center;
-          margin-top: 2rem;
-          font-style: italic;
-          color: gray;
-        "
-      ></div>
+      <!-- Galeria Grid -->
+      <div class="row" id="gallery-grid"></div>
+
+      <!-- Sayfalama -->
+      <nav aria-label="Galeri sayfaları" class="mt-4">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Voltar</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Próximo</a>
+          </li>
+        </ul>
+      </nav>
     </div>
 
-    <script>
-      async function carregarButtons() {
-        const buttonsGroup = document.getElementById("buttons-group")
-        try {
-          const response = await fetch(
-            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
-          )
-          const html = await response.text()
-          buttonsGroup.innerHTML = html
+    <!-- Footer ana sayfadan gelecek -->
 
-          // Reexecuta scripts internos, se houver
-          const scripts = buttonsGroup.querySelectorAll("script")
-          scripts.forEach((oldScript) => {
-            const newScript = document.createElement("script")
-            newScript.text = oldScript.text
-            document.body.appendChild(newScript)
-            oldScript.remove()
-          })
+    <!-- Scripts -->
+    <script src="../../assets/utils/ButtonsStyle/buttonsStyle.js"></script>
+    <script src="../../assets/utils/ButtonFilter/buttonFilter.js"></script>
 
-          const buttonStyle = document.getElementById("main-buttons")
-
-          if (buttonStyle) {
-            window.addEventListener("scroll", () => {
-              if (window.scrollY > 0) {
-                buttonStyle.classList.add("fixed")
-              } else {
-                buttonStyle.classList.remove("fixed")
-              }
-            })
-          }
-        } catch (err) {
-          console.error("Erro ao carregar o componente de botões:", err)
-        }
-      }
-
-      carregarButtons()
-    </script>
-
-    <script>
-      async function carregarSearchStyle() {
-        const placeholder = document.getElementById("search-placeholder")
-        try {
-          const response = await fetch(
-            "../../assets/utils/SearchStyle/searchstyle.html"
-          )
-          const html = await response.text()
-          placeholder.innerHTML = html
-
-          // Reexecuta scripts internos, se houver
-          const scripts = placeholder.querySelectorAll("script")
-          scripts.forEach((oldScript) => {
-            const newScript = document.createElement("script")
-            newScript.text = oldScript.text
-            document.body.appendChild(newScript)
-            oldScript.remove()
-          })
-
-          // ✅ Adiciona o evento no input após carregá-lo
-          const input = document.getElementById("search-input")
-          if (input) {
-            input.addEventListener("input", (e) => {
-              const query = e.target.value.toLowerCase()
-              const filtered = allPops.filter((pop) =>
-                pop.name.toLowerCase().includes(query)
-              )
-              renderPops(filtered)
-            })
-          }
-        } catch (err) {
-          console.error("Erro ao carregar o componente de busca:", err)
-        }
-
-        const searchBar = document.getElementById("search-bar")
-
-        if (searchBar) {
-          window.addEventListener("scroll", () => {
-            if (window.scrollY > 0) {
-              searchBar.classList.add("fixed")
-            } else {
-              searchBar.classList.remove("fixed")
-            }
-          })
-        }
-      }
-      carregarSearchStyle()
-    </script>
-
-    <script>
-      $(document).ready(function () {
-        var zindex = 10
-
-        $("div.card").click(function (e) {
-          e.preventDefault()
-
-          var isShowing = false
-
-          if ($(this).hasClass("show")) {
-            isShowing = true
-          }
-
-          if ($("div.cards").hasClass("showing")) {
-            // a card is already in view
-            $("div.card.show").removeClass("show")
-
-            if (isShowing) {
-              // this card was showing - reset the grid
-              $("div.cards").removeClass("showing")
-            } else {
-              // this card isn't showing - get in with it
-              $(this).css({ zIndex: zindex }).addClass("show")
-            }
-
-            zindex++
-          } else {
-            // no cards in view
-            $("div.cards").addClass("showing")
-            $(this).css({ zIndex: zindex }).addClass("show")
-
-            zindex++
-          }
-        })
-      })
-    </script>
-
-    <script>
-      async function loadPops() {
-        const response = await fetch("../../data/pops.json")
-        const pops = await response.json()
-
-        const container = document.getElementById("container-pop")
-        container.innerHTML = ""
-
-        // Agrupar por categoria
-        const grouped = {}
-        pops.forEach((item) => {
-          if (!grouped[item.category]) grouped[item.category] = []
-          grouped[item.category].push(item)
-        })
-
-        // Criar HTML por categoria
-        for (const category in grouped) {
-          const cardsDiv = document.createElement("div")
-          cardsDiv.className = "cards"
-          cardsDiv.innerHTML = `<h2>${category}</h2>`
-
-          grouped[category].forEach((pop) => {
-            const card = document.createElement("div")
-            card.className = "card"
-            card.innerHTML = `
-          <div class="card__image-holder">
-            <img class="card__image" src="${pop.image}" alt="${pop.title}" />
-          </div>
-          <div class="card-title">
-            <a class="toggle-info btn">
-              <span class="left"></span>
-              <span class="right"></span>
-            </a>
-            <h2>${pop.type}<small>${pop.title}</small></h2>
-          </div>
-          <div class="card-flap flap1">
-            <div class="card-description">
-              ${pop.description}
-            </div>
-            <div class="card-flap flap2">
-              <div class="card-actions">
-                <button class="btn btn-primary toggle-flap" onClick="${pop.url} download>Download</button>
-                <button class="btn btn-danger toggle-flap" onClick="${pop.url} target="_blank">Ver mais</button>
-              </div>
-            </div>
-          </div>
-        `
-            cardsDiv.appendChild(card)
-          })
-
-          container.appendChild(cardsDiv)
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", loadPops)
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
   </body>
 </html>
