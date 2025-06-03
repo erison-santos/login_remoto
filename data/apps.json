@@ -188,6 +188,34 @@
     "download": "/downloads/SISTEMAS/WindowsServer_MULTI.iso",
     "category": "SISTEMAS"
   },
+    {
+    "name": "Spark 32bit",
+    "image": "https://th.bing.com/th/id/OIP.jW50OoCu-TOT2FSDQ_jG8wAAAA?rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/Spark/spark_3_0_2-32bit.exe",
+    "category": "SISTEMAS"
+  },
+    {
+    "name": "Spark 64bit",
+    "image": "https://th.bing.com/th/id/OIP.jW50OoCu-TOT2FSDQ_jG8wAAAA?rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/Spark/spark_3_0_2-64bit.exe",
+    "category": "SISTEMAS"
+  },
+    {
+    "name": "Spark Admin 64bit",
+    "image": "https://th.bing.com/th/id/OIP.jW50OoCu-TOT2FSDQ_jG8wAAAA?rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/Spark/spark_3_0_2-Admin-64bit.msi",
+    "category": "SISTEMAS"
+  },
+    {
+    "name": "Openfire 4.9.2",
+    "image": "https://th.bing.com/th/id/OIP.Hi5UoSDaHsjN4PLq1wFKGgHaE7?rs=1&pid=ImgDetMain",
+    "color": "#969696",
+    "download": "/downloads/SISTEMAS/Spark/openfire_4_9_2_x64.exe",
+    "category": "SISTEMAS"
+  },
   {
     "name": "Oracle 11gR2 32x",
     "image": "https://www.techasoft.com/debug/img/oracle.png",

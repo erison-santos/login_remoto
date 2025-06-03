@@ -57,23 +57,11 @@
         color: white;
         padding: 20px;
         transition: opacity 0.3s ease;
-        opacity: 0;
+        /* opacity: 0; */
       }
 
       .gallery-item:hover .overlay {
         opacity: 1;
-      }
-
-      .pop-link a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .pop-link h6 {
-      }
-
-      .pop-link footer {
-        margin-top: auto;
       }
 
       .pop-item {
@@ -108,6 +96,7 @@
       }
     </style>
   </head>
+
   <body>
     <!-- Header ve Navbar ana sayfadan gelecek -->
 
@@ -153,5 +142,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <script>
+      initButtonFilter({
+        jsonPath: "../../data/pops.json",
+        buildCardHTML: (pop) => `
+            <a href="${pop.url}" data-caption="${pop.description}" target="_blank">
+              <img src="${pop.thumbnail}" alt="${pop.title}">
+              <div class="overlay">
+                <h5>${pop.title}</h5>
+                <p class="mb-0"><small>${pop.type}</small></p>
+              </div>
+            </a>
+        `
+      })
+    </script>
   </body>
 </html>

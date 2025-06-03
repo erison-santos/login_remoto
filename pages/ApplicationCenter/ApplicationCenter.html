@@ -5,7 +5,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-        <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -272,9 +272,9 @@
         <div id="search-placeholder" class="search-wrapper"></div>
         <div id="buttons-group" class="buttons-group"></div>
       </div>
-  
+
       <div class="app-container" id="app-container"></div>
-  
+
       <div
         id="no-results-message"
         style="
@@ -287,161 +287,8 @@
       ></div>
     </div>
 
-    <script>
-      let allApps = []
-
-      /* Função para renderizar os apps dinamicamente */
-      function renderApps(apps) {
-        const container = document.getElementById("app-container")
-        const noResultsMessage = document.getElementById("no-results-message")
-        container.innerHTML = ""
-
-        if (apps.length === 0) {
-          fetch("../../assets/utils/ResultsFound/resultsfound.html")
-            .then((res) => res.text())
-            .then((html) => {
-              noResultsMessage.innerHTML = html
-              noResultsMessage.style.display = "block"
-            })
-            .catch((err) => {
-              console.error("Erro ao carregar resultsfound.html:", err)
-              noResultsMessage.innerHTML =
-                "<p style='color:red;'>Erro ao exibir animação.</p>"
-              noResultsMessage.style.display = "block"
-            })
-          return
-        } else {
-          noResultsMessage.innerHTML = ""
-          noResultsMessage.style.display = "none"
-        }
-
-        const grouped = apps.reduce((acc, app) => {
-          acc[app.category] = acc[app.category] || []
-          acc[app.category].push(app)
-          return acc
-        }, {})
-
-        Object.keys(grouped).forEach((category) => {
-          const section = document.createElement("section")
-
-          const header = document.createElement("header")
-          header.innerHTML = `<h1>${category}</h1>`
-          section.appendChild(header)
-
-          grouped[category].forEach((app) => {
-            const article = document.createElement("article")
-            article.style.setProperty("--avarage-color", app.color)
-            article.innerHTML = `
-          <a class="downloadLink" href="${app.download}" download>
-            <figure>
-              <img src="${app.image}" alt="${app.name}" />
-              <figcaption>${app.name}</figcaption>
-            </figure>
-          </a>
-        `
-            section.appendChild(article)
-          })
-
-          container.appendChild(section)
-        })
-      }
-
-      fetch("/data/apps.json")
-        .then((res) => res.json())
-        .then((apps) => {
-          allApps = apps
-          renderApps(allApps)
-        })
-        .catch((err) => {
-          console.error("Erro ao carregar os aplicativos:", err)
-        })
-    </script>
-
-    <script>
-      async function carregarButtons() {
-        const buttonsGroup = document.getElementById("buttons-group")
-        try {
-          const response = await fetch(
-            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
-          )
-          const html = await response.text()
-          buttonsGroup.innerHTML = html
-
-          // Reexecuta scripts internos, se houver
-          const scripts = buttonsGroup.querySelectorAll("script")
-          scripts.forEach((oldScript) => {
-            const newScript = document.createElement("script")
-            newScript.text = oldScript.text
-            document.body.appendChild(newScript)
-            oldScript.remove()
-          })
-
-          const buttonStyle = document.getElementById("main-buttons")
-
-          if (buttonStyle) {
-            window.addEventListener("scroll", () => {
-              if (window.scrollY > 0) {
-                buttonStyle.classList.add("fixed")
-              } else {
-                buttonStyle.classList.remove("fixed")
-              }
-            })
-          }
-        } catch (err) {
-          console.error("Erro ao carregar o componente de botões:", err)
-        }
-      }
-
-      carregarButtons()
-    </script>
-
-    <script>
-      async function carregarSearchStyle() {
-        const placeholder = document.getElementById("search-placeholder")
-        try {
-          const response = await fetch(
-            "../../assets/utils/SearchStyle/searchstyle.html"
-          )
-          const html = await response.text()
-          placeholder.innerHTML = html
-
-          // Reexecuta scripts internos, se houver
-          const scripts = placeholder.querySelectorAll("script")
-          scripts.forEach((oldScript) => {
-            const newScript = document.createElement("script")
-            newScript.text = oldScript.text
-            document.body.appendChild(newScript)
-            oldScript.remove()
-          })
-
-          // ✅ Adiciona o evento no input após carregá-lo
-          const input = document.getElementById("search-input")
-          if (input) {
-            input.addEventListener("input", (e) => {
-              const query = e.target.value.toLowerCase()
-              const filtered = allApps.filter((app) =>
-                app.name.toLowerCase().includes(query)
-              )
-              renderApps(filtered)
-            })
-          }
-        } catch (err) {
-          console.error("Erro ao carregar o componente de busca:", err)
-        }
-
-        const searchBar = document.getElementById("search-bar")
-
-        if (searchBar) {
-          window.addEventListener("scroll", () => {
-            if (window.scrollY > 0) {
-              searchBar.classList.add("fixed")
-            } else {
-              searchBar.classList.remove("fixed")
-            }
-          })
-        }
-      }
-      carregarSearchStyle()
-    </script>
+    <script src="../../assets/utils/SearchStyle/searchstyle.js"></script>
+    <script src="../../assets/utils/ButtonsStyle/buttonsStyle.js"></script>
+    <script src="./renderApps.js"></script>
   </body>
 </html>

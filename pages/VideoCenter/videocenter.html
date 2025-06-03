@@ -57,7 +57,7 @@
         color: white;
         padding: 20px;
         transition: opacity 0.3s ease;
-        opacity: 0;
+        /* opacity: 0; */
       }
 
       .gallery-item:hover .overlay {
@@ -102,76 +102,17 @@
     <!-- Galeri İçeriği -->
     <div class="container mt-4">
       <div id="buttons-group" class="buttons-group"></div>
-      <!-- Breadcrumb -->
-      <!-- <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../../../pages/ApplicationCenter/ApplicationCenter.html">Home</a></li>
-                <li class="breadcrumb-item active text-danger">Videos</li>
-            </ol>
-        </nav> -->
 
       <!-- Galeri Başlık -->
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Central de Vídeos</h2>
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-outline-warning active filter-btn"
-            data-category="all"
-          >
-            Todos
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-warning filter-btn"
-            data-category="server"
-          >
-            Servidores
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-warning filter-btn"
-            data-category="service"
-          >
-            Serviços
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-warning filter-btn"
-            data-category="system"
-          >
-            Sistemas
-          </button>
-        </div>
+
+        <!-- Grupo de botões Categoria -->
+        <div id="categoria-buttons" class="btn-group"></div>
       </div>
 
       <!-- Kategori Filtreleme -->
-      <div class="mb-4">
-        <button
-          class="btn btn-sm btn-outline-secondary filter-btn"
-          data-subcategory="all"
-        >
-          Todos
-        </button>
-        <button
-          class="btn btn-sm btn-outline-secondary filter-btn"
-          data-subcategory="saw"
-        >
-          SAW
-        </button>
-        <button
-          class="btn btn-sm btn-outline-secondary filter-btn"
-          data-subcategory="paloalto"
-        >
-          Palo Alto
-        </button>
-        <button
-          class="btn btn-sm btn-outline-secondary filter-btn"
-          data-subcategory="grafana"
-        >
-          Grafana
-        </button>
-      </div>
+      <div id="subcategoria-buttons" class="mb-4"></div>
 
       <!-- Galeria Grid -->
       <div class="row" id="gallery-grid"></div>
@@ -195,171 +136,26 @@
     <!-- Footer ana sayfadan gelecek -->
 
     <!-- Scripts -->
+    <script src="../../assets/utils/ButtonsStyle/buttonsStyle.js"></script>
+    <script src="../../assets/utils/ButtonFilter/buttonFilter.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
     <script>
-      async function carregarButtons() {
-        const buttonsGroup = document.getElementById("buttons-group")
-        try {
-          const response = await fetch(
-            "../../assets/utils/ButtonsStyle/buttonsStyle.html"
-          )
-          const html = await response.text()
-          buttonsGroup.innerHTML = html
-
-          // Reexecuta scripts internos, se houver
-          const scripts = buttonsGroup.querySelectorAll("script")
-          scripts.forEach((oldScript) => {
-            const newScript = document.createElement("script")
-            newScript.text = oldScript.text
-            document.body.appendChild(newScript)
-            oldScript.remove()
-          })
-
-          const buttonStyle = document.getElementById("main-buttons")
-
-          if (buttonStyle) {
-            window.addEventListener("scroll", () => {
-              if (window.scrollY > 0) {
-                buttonStyle.classList.add("fixed")
-              } else {
-                buttonStyle.classList.remove("fixed")
-              }
-            })
-          }
-        } catch (err) {
-          console.error("Erro ao carregar o componente de botões:", err)
-        }
-      }
-
-      carregarButtons()
-    </script>
-
-    <script>
-      $(document).ready(function () {
-
-        // Funções de Filtragem
-        let currentCategory = "all"
-        let currentSubCategory = "all"
-
-        function aplicarFiltro() {
-          const $items = $(".gallery-item")
-
-          $items
-            .hide()
-            .filter(function () {
-              const item = $(this)
-              const catMatch =
-                currentCategory === "all" ||
-                item.data("category") === currentCategory
-              const subMatch =
-                currentSubCategory === "all" ||
-                item.data("subcategory") === currentSubCategory
-              return catMatch && subMatch
-            })
-            .show()
-        }
-
-        $(".filter-btn[data-category]").click(function () {
-          currentCategory = $(this).data("category")
-          $(".filter-btn[data-category]").removeClass("active")
-          $(this).addClass("active")
-          aplicarFiltro()
-        })
-
-        $(".filter-btn[data-subcategory]").click(function () {
-          currentSubCategory = $(this).data("subcategory")
-          $(".filter-btn[data-subcategory]").removeClass("active")
-          $(this).addClass("active")
-          aplicarFiltro()
-        })
-
-        // Lazy Loading
-        function lazyLoad() {
-          const images = document.querySelectorAll('img[loading="lazy"]')
-          images.forEach((img) => {
-            if (img.getBoundingClientRect().top < window.innerHeight) {
-              img.src = img.dataset.src
-              img.removeAttribute("loading")
-            }
-          })
-        }
-
-        // Timer para evento de scroll
-        let scrollTimeout
-        window.addEventListener("scroll", function () {
-          if (scrollTimeout) {
-            window.cancelAnimationFrame(scrollTimeout)
-          }
-          scrollTimeout = window.requestAnimationFrame(lazyLoad)
-        })
-
-        // Primeiro carregamento
-        lazyLoad()
+      initButtonFilter({
+        jsonPath: "../../data/videos.json",
+        buildCardHTML: (video) => `
+          <a href="${video.url}" data-caption="${video.caption}" target="_blank">
+            <img src="${video.thumbnail}" alt="${video.title}">
+            <div class="overlay">
+              <h5>${video.title}</h5>
+              <p class="mb-0"><small>${video.date}</small></p>
+            </div>
+          </a>
+        `,
       })
-
-      // Scroll Infinito
-      let page = 1
-      let loading = false
-
-      window.addEventListener("scroll", function () {
-        if (
-          window.innerHeight + window.scrollY >=
-            document.body.offsetHeight - 1000 &&
-          !loading
-        ) {
-          loadMoreContent()
-        }
-      })
-
-      function loadMoreContent() {
-        // API'den yeni içerik yükleme simülasyonu
-        loading = true
-        // AJAX çağrısı yapılacak
-        setTimeout(() => {
-          page++
-          loading = false
-        }, 1000)
-      }
-    </script>
-
-    <script>
-      async function carregarVideos() {
-        const container = document.getElementById("gallery-grid")
-        container.innerHTML = ""
-
-        try {
-          const response = await fetch("../../data/videos.json")
-          const videos = await response.json()
-
-          videos.forEach((video) => {
-            const col = document.createElement("div")
-            col.className = `col-md-3 gallery-item video-item`
-            col.dataset.category = video.category
-            col.dataset.subcategory = video.subcategory
-
-            col.innerHTML = `
-              <a href="${video.url}" data-caption="${video.caption}" target="_blank">
-                <img src="${video.thumbnail}" alt="${video.title}">
-                <div class="overlay">
-                  <h5>${video.title}</h5>
-                  <p class="mb-0"><small>${video.date}</small></p>
-                </div>
-              </a>
-            `
-
-            container.appendChild(col)
-          })
-
-        } catch (err) {
-          console.error("Erro ao carregar vídeos:", err)
-          container.innerHTML = `<p style="color:red;">Erro ao carregar vídeos.</p>`
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", carregarVideos)
     </script>
   </body>
 </html>
