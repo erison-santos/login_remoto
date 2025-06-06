@@ -24,77 +24,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <style>
-      body {
-        background-color: oklch(from #166496 0.12 min(c, 0.0512) h);
-      }
-
-      .gallery-item {
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-
-      .gallery-item .overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-        color: white;
-        padding: 20px;
-        transition: opacity 0.3s ease;
-        /* opacity: 0; */
-      }
-
-      .gallery-item:hover .overlay {
-        opacity: 1;
-      }
-
-      .video-item {
-        position: relative;
-      }
-
-      .video-item::after {
-        content: "\f144";
-        font-family: "Font Awesome 5 Free";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 3rem;
-        color: white;
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-      }
-
-      .video-item:hover::after {
-        opacity: 1;
-      }
-
-      .filter-btn {
-        margin-right: 10px;
-        margin-bottom: 10px;
-      }
-
-      .filter-btn.active {
-        background-color: red;
-        color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="../../pages/VideoCenter/videocenter.css">
   </head>
   <body>
     <!-- Header ve Navbar ana sayfadan gelecek -->

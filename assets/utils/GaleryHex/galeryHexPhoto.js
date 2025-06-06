@@ -1,23 +1,4 @@
-<!-- galeryHex.html -->
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Galeria Hexagonal</title>
-    <link rel="stylesheet" href="../../../assets/utils/GaleryHex/galeryHex.css">
-  </head>
-
-  <body class="hexGallery">
-    <!-- galeryHex.html -->
-    <div class="gallery-header">
-      <h1>Nosso time de Tecnologia 🎇</h1>
-      <em>Unimed FAMA</em>
-    </div>
-
-    <div class="gallery" id="gallery"></div>
-
-    <script>
-      const base = "unsplash.com/photo"
+            const base = "unsplash.com/photo"
       const data = [
         {
           img: "/assets/images/team/membro-1.png",
@@ -61,6 +42,3 @@
         a.appendChild(img)
         gallery.appendChild(a)
       })
-    </script>
-  </body>
-</html>

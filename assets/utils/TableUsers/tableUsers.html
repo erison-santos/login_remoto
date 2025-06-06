@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="../../../assets/utils/TableUsers/tableUsers.css"
+    />
+  </head>
+
+  <body>
+    <div id="containerTableUsers">
+      <div class="d-flex align-items-center justify-content-around">
+        <h4>
+          <span class="blue"></span>Tabela de<span class="blue"></span>
+          <span class="yellow">Usuários</span>
+        </h4>
+        <button id="btnAddUser" type="button" class="btn btn-outline-warning">
+          Adicionar
+        </button>
+      </div>
+
+      <table class="containerTable mb-5">
+        <thead>
+          <tr>
+            <th><h1>Usuário</h1></th>
+            <th><h1>Nome</h1></th>
+            <th><h1>Permissão</h1></th>
+            <th><h1>Status</h1></th>
+            <th><h1>Ações</h1></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-users"></tbody>
+      </table>
+    </div>
+
+    <!-- Modal reusável -->
+    <div
+      class="modal fade"
+      id="modalContainer"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" id="modalContent">
+          <!-- O conteúdo do formulário será injetado aqui -->
+        </div>
+      </div>
+    </div>
+
+    <script src="./tableUsers.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "usuario": "suporte",
+    "nome": "Suporte Técnico",
+    "permissao": "Admin",
+    "status": "Ativo",
+    "passwordHash": "$2b$10$93J5OaFbZPn6QaOnHJtEme7UXTwzPEjvGkWwL4BCjXtM1wYMgURt2"
+  },
+  {
+    "usuario": "teste",
+    "nome": "usuario de teste",
+    "permissao": "Admin",
+    "status": "Ativo",
+    "passwordHash": "$2a$10$YW0ogP0Kw4QIZVigLPWgYe9Q4NBNFWzHaYxwmnCCd3Xg5.rk4gZN6"
+  }
+]
