@@ -8,8 +8,6 @@ const fs = require('fs')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 
-const rotaUsuarios = require('./assets/routes/usuarios')
-app.use('/api/usuarios', rotaUsuarios)
 app.use(express.static(path.join(__dirname, 'public')))
 
 const PORT = 8083;
@@ -30,13 +28,16 @@ app.use('/installs', express.static(path.join(__dirname, 'assets/installs')));
 
 // Servir arquivos de download
 app.use('/downloads', express.static(path.join(__dirname, 'public/downloads')));
-app.use('/data', express.static(path.join(__dirname, 'data')));
+app.get('/api/debug/usuarios', (req, res) => {
+    const usuarios = JSON.parse(fs.readFileSync(usuariosPath, 'utf-8'));
+    res.json(usuarios);
+});
 
 // Sessão
 app.use(session({
     secret: 'FAMA_53rv3r',
     resave: false,
-    saveUnititialized: false
+    saveUninitialized: false
 }))
 
 // Página inicial
@@ -46,7 +47,7 @@ app.get('/', (req, res) => {
 
 // Lógica de login
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { usuario, senha } = req.body;
 
     try {
         if (!fs.existsSync(usuariosPath)) {
@@ -54,22 +55,27 @@ app.post('/login', async (req, res) => {
         }
 
         const usuarios = JSON.parse(fs.readFileSync(usuariosPath, 'utf-8'));
-        const usuario = usuarios.find(u => u.username === username);
+        const user = usuarios.find(u => u.usuario === usuario);
 
-        if (!usuario) {
-            return res.redirect('/?error=1');
+        if (!user) {
+            return res.redirect('/?error=1'); // Erro 1 Usuário não encontrado
         }
 
-        const senhaValida = await bcrypt.compare(password, usuario.passwordHash);
+        // Checar se está desativado
+        if (user.status === false || user.status === 'false') {
+            return res.redirect('/?error=2') // Usuário desativado
+        }
+
+        const senhaValida = await bcrypt.compare(senha, user.passwordHash);
         if (!senhaValida) {
-            return res.redirect('/?error=1');
+            return res.redirect('/?error=3'); // Erro 3 Senha incorreta
         }
 
         req.session.usuario = {
-            username: usuario.username,
-            nome: usuario.nome,
-            permissao: usuario.permissao,
-            status: usuario.status
+            usuario: user.usuario,
+            nome: user.nome,
+            permissao: user.permissao,
+            status: user.status
         };
 
         res.redirect('/pages/ApplicationCenter/ApplicationCenter.html');

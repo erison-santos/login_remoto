@@ -1,16 +1,30 @@
 [
   {
-    "usuario": "suporte",
-    "nome": "Suporte Técnico",
-    "permissao": "Admin",
-    "status": "Ativo",
-    "passwordHash": "$2b$10$93J5OaFbZPn6QaOnHJtEme7UXTwzPEjvGkWwL4BCjXtM1wYMgURt2"
+    "usuario": "erison",
+    "nome": "erison santos",
+    "permissao": false,
+    "status": true,
+    "passwordHash": "$2a$10$g5wk.xMf5swAwlo.Tll0JuU8ZtWO6xpqgOybinqg1efXZCDw.Byba"
   },
   {
-    "usuario": "teste",
-    "nome": "usuario de teste",
-    "permissao": "Admin",
-    "status": "Ativo",
-    "passwordHash": "$2a$10$YW0ogP0Kw4QIZVigLPWgYe9Q4NBNFWzHaYxwmnCCd3Xg5.rk4gZN6"
+    "usuario": "romulo",
+    "nome": "romulo josé",
+    "permissao": false,
+    "status": false,
+    "passwordHash": "$2a$10$WlKO9W3D2JDYfi8FmcydUO1rZe0oS8ruh5eFL.GqVPj3cbt/xARD."
+  },
+  {
+    "usuario": "cyber",
+    "nome": "cyber teste",
+    "permissao": true,
+    "status": true,
+    "passwordHash": "$2a$10$wzmqiRVCcnjooZtXKJyUce4wk6dacMt3TYK/fRUu6WuHeKA0T7a9C"
+  },
+  {
+    "usuario": "suporte",
+    "nome": "suporte manaus",
+    "permissao": true,
+    "status": true,
+    "passwordHash": "$2a$10$FUa5i2YRj/tMy05c9XEATuAOxh8CaMlTQvRkN57vrEiYPJl/inCkO"
   }
 ]

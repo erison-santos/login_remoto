@@ -1,5 +1,6 @@
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link
       rel="stylesheet"
       href="../../../assets/utils/TableUsers/tableUsers.css"
@@ -8,12 +9,18 @@
 
   <body>
     <div id="containerTableUsers">
-      <div class="d-flex align-items-center justify-content-around">
-        <h4>
-          <span class="blue"></span>Tabela de<span class="blue"></span>
-          <span class="yellow">Usuários</span>
-        </h4>
-        <button id="btnAddUser" type="button" class="btn btn-outline-warning">
+      <div class="d-flex align-items-center justify-content-around mb-3">
+        <h2>Tabela de Usuários</h2>
+        <div class="d-flex align-items-center justify-content-between">
+          <i class="material-icons">search</i>
+          <input
+            type="text"
+            id="pesquisaUsuarios"
+            class="form-control"
+            placeholder="Pesquisar..."
+          >
+        </div>
+        <button id="btnAddUser" type="button" class="btn btn-outline-warning d-flex">          
           Adicionar
         </button>
       </div>

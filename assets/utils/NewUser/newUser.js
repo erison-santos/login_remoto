@@ -3,9 +3,12 @@ document.getElementById('formNovoUsuario').addEventListener('submit', async (e) 
 
   const usuario = document.getElementById('usuario').value.trim();
   const nome = document.getElementById('nome').value.trim();
-  const permissao = document.getElementById('permissao').value;
-  const status = document.getElementById('status').value;
   const senha = document.getElementById('senha').value;
+  const checkboxpermissao = document.getElementById('checkbox-permissao').value;
+  const checkboxstatus = document.getElementById('checkbox-status').value;
+
+  const permissao = checkboxpermissao.checked ? false : true
+  const status = checkboxstatus.checked ? false : true
 
   const salt = dcodeIO.bcrypt.genSaltSync(10);
   const passwordHash = dcodeIO.bcrypt.hashSync(senha, salt);
